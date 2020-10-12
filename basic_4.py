@@ -15,4 +15,3 @@ print(f'after delete b = {b}')
 print (hex(id(b)))
 print (hex(id(a)))
 
- 
