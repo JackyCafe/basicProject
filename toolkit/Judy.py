@@ -1,4 +1,7 @@
-class Math:
+import math
+
+
+class My_Math:
 
     @staticmethod
     def max(list1) -> float:
@@ -14,7 +17,8 @@ class Math:
         assert count > 0
         sum = 0
         for l in list1:
-            sum += l
-        return sum / count
+            sum += float(l)
+
+        return round(sum / count,1)
 
 
