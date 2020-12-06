@@ -14,7 +14,7 @@ ser : Series
 keys = df.keys()
 for key in keys:
     ser = df[key][2:].to_numpy(float)
-    ser2 =  Series(ser)
-    ser2.plot.line()
+    # ser2 =  Series(ser)
+    ser.plot.line()
 
 plt.show()
