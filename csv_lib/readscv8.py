@@ -7,18 +7,20 @@ import matplotlib.pyplot as plt
 import matplotlib.pyplot as plt
 path = "../data/"
 # logging.basicConfig(level=logging.INFO,filename='mylog.log',filemode='w')
-
 df = pd.read_csv(path+"A121151.csv")
-series = []
-ser : Series
 keys = df.keys()
-for key in keys:
-    ser_list = df[key][2:].to_numpy(float)
-    ser =Series(ser_list)
-    ser.plot.line(legend=True)
-    series.append(ser_list)
+# df.to_csv('../data/A121155.csv',index=False,header=False)
+columns = []
+for k in keys:
+    columns.append(df[k][0])
 
-plt.legend()
+df1 = pd.read_csv(path+"A121155.csv")
+df1.columns= columns
+
+# series = []
+# ser : Series
+#
+plt.figure()
+df1.plot.line()
+
 plt.show()
-out = pd.DataFrame(np.transpose(series[2:]))
-out.to_csv('../data/A121155.csv',index=False,header=False)
