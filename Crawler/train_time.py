@@ -36,7 +36,7 @@ def getTrip(fromStat,toStat):
         'startStation': staDic[fromStat],
         'endStation': staDic[toStat],
         'rideDate': today,
-    # startOrEndTime: true
+        'csrfmiddlewaretoken':csrf,
         'startTime': sTime,
         'endTime': eTime,
         }
@@ -46,6 +46,6 @@ def getTrip(fromStat,toStat):
     trs = qSoup.find_all('tr','trip-column')
     for tr in trs:
         td = tr.find_all('td')
-        print(f'{td[0].ul.li.a.text} {td[1].text} {td[2].text}  {td[3].text}   {td[6].text}')
+        print(f'{td[0].ul.li.a.text}|{td[1].text}|{td[2].text}|{td[3].text}|{td[6].text.strip()}')
 
-getTrip('沙鹿','苗栗')
+getTrip('沙鹿','臺中')
