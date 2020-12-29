@@ -9,9 +9,9 @@ import matplotlib.pyplot as plt
 
 class NeuralNetwork:
     def __init__(self):
-        np.random.seed(2)
+        # np.random.seed(2)
         self.synaptic_weights = np.random.random((3, 1))
-
+        self.learning_rate = 0.01
     def __str__(self):
         return "{synaptic_weights}".format(synaptic_weights=self.synaptic_weights)
 
@@ -31,9 +31,9 @@ class NeuralNetwork:
             # 計算誤差
             error = yd - y
             # 微調權重( x 與 e*sigmoid_derivative )
-            adjustments = np.dot(training_inputs.T, error * self.sigmoid_derivative(y))
-
-            self.synaptic_weights += adjustments
+            # adjustments = np.dot(training_inputs.T, error * self.sigmoid_derivative(y))
+            adjustments = np.dot(training_inputs.T, error)
+            self.synaptic_weights += self.learning_rate*adjustments
 
 
 neural_network = NeuralNetwork()
@@ -66,11 +66,3 @@ ax.plot([0, 2], [k * (0) + b, k * 2 + b])
 
 plt.show()
 
-user_input_one = str(input("User Input One: "))
-user_input_two = str(input("User Input Two: "))
-user_input_three = str(input("User Input Three: "))
-
-print("Considering New Situation: ", user_input_one, user_input_two, user_input_three)
-print("New Output data: ")
-print(neural_network.think(np.array([user_input_one, user_input_two, user_input_three])))
-print("Wow, we did it!")
